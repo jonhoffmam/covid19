@@ -1,8 +1,7 @@
 .formControl {
 	width: 50%;
 	max-width: 265px;	
-	margin-bottom: 30px !important;
-	margin-left: 10px !important;
+	margin-bottom: 30px !important;	
 }
 
 @media only screen and (max-width: 770px) {
@@ -10,6 +9,5 @@
 		width: 100%;
 		max-width: 100%;
 		margin-bottom: 30px !important;
-		margin-left: 0 !important;
 	}
 }

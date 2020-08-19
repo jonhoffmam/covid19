@@ -8,19 +8,23 @@ import { fetchDataState } from '../../../services/api';
 import styles from './styles.module.css';
 
 const Info = (props: any) => {
+	const {nameUfs} = props;
 	const [data, setData] = useState({confirmed: 0, recovered: 0, deaths: 0, date: 0});		
 	const dateFormat = format(new Date(data.date), `dd 'de' MMMM 'de' yyyy`, {locale: ptBR});
 
 	useEffect(() => {
+		if (!nameUfs) {
+			return;
+		}
+		const fetchAPI = async () => {
+			const data = await fetchDataState(nameUfs);
+			const {confirmed, recovered, deaths, lastUpdate: date} = data[0];
+					
+			setData({confirmed, recovered, deaths, date});
+		}
 		fetchAPI();
-	},[]);
+	},[nameUfs]);
 
-	const fetchAPI = async () => {
-		const data = await fetchDataState('Espírito Santo');
-		const {confirmed, recovered, deaths, lastUpdate: date} = data[0];
-				
-		setData({confirmed, recovered, deaths, date});
-	}
 	
 	return (
 		<div className={styles.container}>
@@ -31,6 +35,7 @@ const Info = (props: any) => {
 					value={data.confirmed}
 					lastUpdate={dateFormat}
 					cardSubtitle="Número de casos confirmados de COVID-19."
+					spacing={3}
 				/>
 				<CardComponent
 					className={styles.recovered}
@@ -38,13 +43,15 @@ const Info = (props: any) => {
 					value={data.recovered}
 					lastUpdate={dateFormat}
 					cardSubtitle="Número de recuperados do COVID-19."
+					spacing={3}
 				/>
 				<CardComponent
 					className={styles.deaths}
-					cardTitle="Óbitos"
+					cardTitle="Mortes"
 					value={data.deaths}
 					lastUpdate={dateFormat}
 					cardSubtitle="Número de mortes causadas pelo COVID-19."
+					spacing={3}
 				/>
 			</Grid>
 		</div>

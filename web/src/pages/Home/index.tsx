@@ -1,28 +1,46 @@
-import React, { useEffect, useState } from 'react';
-import moment from 'moment';
-import 'moment/locale/pt-br';
+import React, { useState } from 'react';
 
 
-import { StateCards, CityCards, Chart, CityPicker } from '../../components'
+import { StateCards, CityCards, Chart, CityPicker, StatePicker } from '../../components'
+
+import styles from './styles.module.css';
 
 
 const Home = () => {
-	// const [data, setData] = useState();
+	const [selectedInitUfs, setSelecetedInitUfs] = useState();	
+	const [selectedNameUfs, setSelecetedNameUfs] = useState('Espírito Santo');	
+	const [selectedCity, setSelecetedCity] = useState();
+	const [selectedUfTemp, setSelecetedUfTemp] = useState();
 
-	// useEffect(() => {
-	// 	api.get('data/ES/Vitória').then(response => 
-	// 			setData(response.data[0].confirmed)
-	// 		).catch(err => console.log('Erro:', err))
-	// },[]);
+	function handleSelectUf(event: any) {
+		const initialsUf = event.target.value.substr(0,2);
+		const nameUf = event.target.value.substr(3)	
+		
+		setSelecetedInitUfs(initialsUf);
+		setSelecetedNameUfs(nameUf);		
+	}
+
+	function handleSelectCity(event: any) {
+		const city = event.target.value;
+		
+		setSelecetedCity(city);
+		setSelecetedUfTemp(selectedInitUfs);
+	}
 
 	return (
-		<>
-		<h1>{moment('2020-08-13').format('LL')}</h1>
-		<StateCards />
-		<CityCards />
-		<CityPicker />
-		<Chart />
-		</>
+		<div className={styles.container}>
+			<h1>{selectedNameUfs} ({selectedInitUfs})</h1>
+			<StateCards nameUfs={selectedNameUfs}/>
+
+			<h1>{selectedCity} - {selectedUfTemp !== selectedInitUfs ? selectedUfTemp : selectedInitUfs}</h1>
+			<CityCards initialsState={selectedInitUfs} city={selectedUfTemp !== selectedInitUfs ? undefined : selectedCity}/>
+
+			<div className={styles.containerCards}>
+				<StatePicker handleSelectUf={handleSelectUf}/>
+				<CityPicker handleSelectCity={handleSelectCity} initialsState={selectedInitUfs}/>
+			</div>
+			<Chart />
+		</div>
 	)
 }
 

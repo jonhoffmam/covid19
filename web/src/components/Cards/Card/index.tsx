@@ -6,9 +6,9 @@ import cx from 'classnames';
 import styles from './styles.module.css';
 
 const CardComponent = (props: any) => {
-	const { className, cardTitle, value, lastUpdate, cardSubtitle } = props;
+	const { className, cardTitle, value, lastUpdate, cardSubtitle, spacing } = props;
 	return (
-  <Grid item xs={12} md={3} component={Card} className={cx(styles.card, className)}>
+  <Grid item xs={12} md={spacing} component={Card} className={cx(styles.card, className)}>
     <CardContent>
       <Typography color="textSecondary" gutterBottom>
         {cardTitle}
@@ -17,7 +17,7 @@ const CardComponent = (props: any) => {
         <CountUp start={0} end={value} duration={2.75} separator="." />
       </Typography>
       <Typography color="textSecondary">
-        {lastUpdate}
+        {lastUpdate === '01 de janeiro de 2000' ? '-' : lastUpdate}
       </Typography>
       <Typography variant="body2" component="p">
         {cardSubtitle}
