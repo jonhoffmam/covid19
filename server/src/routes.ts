@@ -41,7 +41,7 @@ routes.get('/data/:uf/:city', (request, response) => {
 		const timeNow = setDate.format('LT');
 		const dateTimeNow = setDate.format();
 		
-		const nextTimeReq = moment(timeRequest).add(1, 'hour').locale('pt-br').format();	
+		const nextTimeReq = moment(timeRequest).add(4, 'hour').locale('pt-br').format();	
 		
 		
 		console.log('Local:', city,'| Time:', timeNow, 'TimeReq:', moment(timeRequest).locale('pt-br').format('LT'), 'NextReq:', moment(nextTimeReq).locale('pt-br').format('LT'));
