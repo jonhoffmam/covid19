@@ -17,7 +17,7 @@ const CardComponent = (props: any) => {
         <CountUp start={0} end={value} duration={2.75} separator="." />
       </Typography>
       <Typography color="textSecondary">
-        {lastUpdate === '01 de janeiro de 2000' ? '-' : lastUpdate}
+        {lastUpdate === '01 de janeiro de 2000' || lastUpdate === 0 ? '-' : lastUpdate}
       </Typography>
       <Typography variant="body2" component="p">
         {cardSubtitle}

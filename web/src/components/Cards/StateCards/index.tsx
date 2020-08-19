@@ -3,7 +3,7 @@ import { Grid } from '@material-ui/core';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import CardComponent from '../Card';
-import { fetchDataState } from '../../../services/api';
+import { fetchDataState, fetchDataCountry } from '../../../services/api';
 
 import styles from './styles.module.css';
 
@@ -13,7 +13,19 @@ const Info = (props: any) => {
 	const dateFormat = format(new Date(data.date), `dd 'de' MMMM 'de' yyyy`, {locale: ptBR});
 
 	useEffect(() => {
-		if (!nameUfs) {
+		if (!nameUfs || nameUfs === '0') {
+			const fetchAPI = async () => {
+				const data = await fetchDataCountry();
+				const {confirmed, recovered, deaths, lastUpdate: date} = data;
+				
+				setData({
+					confirmed: confirmed.value,
+					recovered: recovered.value,
+					deaths: deaths.value,
+					date
+				});
+			}
+			fetchAPI();
 			return;
 		}
 		const fetchAPI = async () => {

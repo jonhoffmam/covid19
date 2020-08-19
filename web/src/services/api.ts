@@ -49,3 +49,13 @@ export const fetchDataCities = async (uf: string) => {
 	}
 }
 
+export const fetchDataCountry = async () => {
+	try {
+		const response = await axios.get ('https://covid19.mathdro.id/api/countries/BR');
+
+		return response.data;
+	} catch (err) {
+		return err;
+	}
+}
+

@@ -9,17 +9,18 @@ import styles from './styles.module.css';
 
 const Info = (props: any) => {
 	const {initialsState, city} = props;
-	const [data, setData]	= useState({confirmed: 0, deaths: 0, date: '2000-01-01'});	
+	const [data, setData]	= useState({confirmed: 0, deaths: 0, date: '2000-01-01'});
 	const dateFormat = format(parse(!data.date ? '2000-01-01' : data.date, 'yyyy-MM-dd', new Date()), `dd 'de' MMMM 'de' yyyy`, {locale: ptBR});
 
 	useEffect(() => {
-		if (!city) {			
+		if (!city) {
+			setData({confirmed: 0, deaths: 0, date: '2000-01-01'});
 			return;
 		}
-		async function fetchData() {
+		async function fetchAPI() {
 			setData(await fetchDataCity(initialsState, city));
 		}
-		fetchData();		
+		fetchAPI();
 	},[city, initialsState]);
 
 
