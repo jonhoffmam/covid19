@@ -2,10 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "ts-node src/server.ts",
-    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --unhandled-rejections=strict src/server.ts",
+    "start": "ts-node index.ts",    
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --unhandled-rejections=strict index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
