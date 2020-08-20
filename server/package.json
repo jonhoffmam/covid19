@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "now-start": "ts-node src/server.ts",
     "start": "ts-node-dev --transpile-only --ignore-watch node_modules --unhandled-rejections=strict src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
