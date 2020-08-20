@@ -5,6 +5,10 @@ import moment from 'moment';
 
 const routes = Router();
 
+routes.get('/', (request, response) => {
+	return response.json({access: 'Access OK'})
+})
+
 
 routes.get('/data/:uf/:city', (request, response) => {
 	const city = request.params.city;
