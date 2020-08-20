@@ -1,42 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Grid } from '@material-ui/core';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import CardComponent from '../Card';
-import { fetchDataState, fetchDataCountry } from '../../../services/api';
 
 import styles from './styles.module.css';
 
 const Info = (props: any) => {
-	const {nameUfs} = props;
-	const [data, setData] = useState({confirmed: 0, recovered: 0, deaths: 0, date: 0});		
+	const {dataUf: data} = props;	
 	const dateFormat = format(new Date(data.date), `dd 'de' MMMM 'de' yyyy`, {locale: ptBR});
-
-	useEffect(() => {
-		if (!nameUfs || nameUfs === '0') {
-			const fetchAPI = async () => {
-				const data = await fetchDataCountry();
-				const {confirmed, recovered, deaths, lastUpdate: date} = data;
-				
-				setData({
-					confirmed: confirmed.value,
-					recovered: recovered.value,
-					deaths: deaths.value,
-					date
-				});
-			}
-			fetchAPI();
-			return;
-		}
-		const fetchAPI = async () => {
-			const data = await fetchDataState(nameUfs);
-			const {confirmed, recovered, deaths, lastUpdate: date} = data[0];
-					
-			setData({confirmed, recovered, deaths, date});
-		}
-		fetchAPI();
-	},[nameUfs]);
-
 	
 	return (
 		<div className={styles.container}>

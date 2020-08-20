@@ -1,7 +1,15 @@
 :root {
-  --primary-color: #34CB79;
+  --primary-color: #00C319;
   --title-color: #000;
   --text-color: #6C6C80;
+  --black: #CCC;
+  --confirmed-solid: #0070FF;
+  --confirmed-opacity: rgba(0, 110, 255, 0.6);
+  --recovered-solid: #00C319;
+  --recovered-opacity: rgba(0, 195, 25, 0.6);
+  --deaths-solid: #C30000;
+  --deaths-opacity: rgba(195, 0, 0, 0.6);
+
 }
 
 * {
@@ -10,7 +18,23 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {  
+  -webkit-font-smoothing: antialiased;  
+}
+
 h1, h2, h3, h4, h5, h6 {
   color: var(--title-color);
   font-family: Ubuntu;
+}
+
+a {
+  color: var(--confirmed-solid);
+  font-weight: bold;
+  text-decoration: none;
 }

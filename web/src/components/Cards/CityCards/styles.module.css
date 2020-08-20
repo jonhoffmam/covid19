@@ -2,17 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 15px 0;
+  margin: 15px 0;  
 }
 
 .infected {
-  border-bottom: 10px solid rgba(0, 0, 255, 0.5);
-}
-
-.recovered{
-  border-bottom: 10px solid rgba(0, 255, 0, 0.5);
+  border-bottom: 10px solid var(--confirmed-opacity);  
 }
 
 .deaths{
-  border-bottom: 10px solid rgba(255, 0, 0, 0.5);
+  border-bottom: 10px solid var(--deaths-opacity);  
 }

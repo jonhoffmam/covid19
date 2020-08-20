@@ -1,28 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Grid } from '@material-ui/core';
 import { format, parse } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import CardComponent from '../Card';
-import { fetchDataCity } from '../../../services/api';
 
 import styles from './styles.module.css';
 
-const Info = (props: any) => {
-	const {initialsState, city} = props;
-	const [data, setData]	= useState({confirmed: 0, deaths: 0, date: '2000-01-01'});
+const Info = (props: any) => {	
+	const {dataCity: data} = props;
 	const dateFormat = format(parse(!data.date ? '2000-01-01' : data.date, 'yyyy-MM-dd', new Date()), `dd 'de' MMMM 'de' yyyy`, {locale: ptBR});
-
-	useEffect(() => {
-		if (!city) {
-			setData({confirmed: 0, deaths: 0, date: '2000-01-01'});
-			return;
-		}
-		async function fetchAPI() {
-			setData(await fetchDataCity(initialsState, city));
-		}
-		fetchAPI();
-	},[city, initialsState]);
-
 
 	return (
 		<div className={styles.container}>

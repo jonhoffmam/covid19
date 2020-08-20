@@ -8,8 +8,9 @@ export const fetchDataCity = async (uf: string, city: string) => {
 	try {
 		const response = await api.get(`data/${uf}/${city}`);
 		const {confirmed, deaths, date} = response.data[0];
+		const data = response.data;
 		
-		return {confirmed, deaths, date};
+		return {data, confirmed, deaths, date};
 	} catch (err) {
 		return err;
 	}
