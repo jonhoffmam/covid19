@@ -1,14 +1,10 @@
 import axios from 'axios';
 
-const api = axios.create({
-	baseURL: 'http://localhost:3333'
-});
-
 export const fetchDataCity = async (uf: string, city: string) => {
 	try {
-		const response = await api.get(`data/${uf}/${city}`);
-		const {confirmed, deaths, date} = response.data[0];
-		const data = response.data;
+		const response = await axios.get(`https://brasil.io/api/dataset/covid19/caso/data/?format=json&state=${uf}&city=${city}`);
+		const {confirmed, deaths, date} = response.data.results[0];
+		const data = response.data.results;
 		
 		return {data, confirmed, deaths, date};
 	} catch (err) {
