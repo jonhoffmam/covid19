@@ -36,17 +36,17 @@ const Home = () => {
 	}
 
 	useEffect(() => {
-		if (!selectedCity || selectedInitUfs === '0') {
+		if (!selectedCity || selectedInitUfs === '0' || selectedUfTemp !== selectedInitUfs) {
 			setDataCity({data: [], confirmed: 0, deaths: 0, date: '2000-01-01'});
 			return;
-		}		
-
+		}
+		
 		async function fetchAPI() {			
 			setDataCity(await fetchDataCity(selectedInitUfs, selectedCity));
 		}
 		
 		fetchAPI();
-	},[selectedCity, selectedInitUfs]);
+	},[selectedCity, selectedInitUfs, selectedUfTemp]);
 
 	useEffect(() => {
 		if (!selectedNameUfs || selectedNameUfs === '0') {
@@ -85,7 +85,7 @@ const Home = () => {
 				}
 				<StateCards dataUf={dataUf}/>
 
-				{selectedInitUfs === '' || selectedInitUfs === '0' || selectedCity === ''?
+				{selectedInitUfs === '' || selectedInitUfs === '0' || selectedCity === '' || selectedUfTemp !== selectedInitUfs?
 				<h1>-</h1>
 				:
 				<h1>{selectedCity} - {selectedUfTemp !== selectedInitUfs ? selectedUfTemp : selectedInitUfs}</h1>
