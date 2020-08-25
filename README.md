@@ -19,9 +19,9 @@ When loading the page, the country data is informed. When the state is selected,
 - [**TypeScript**](https://www.typescriptlang.org/)
 
 ### Were also used:
-- **API:**
-**Country and States:** [covid19.mathdro.id/api](https://covid19.mathdro.id/api)
-**Cities:** [brasil.io](https://brasil.io/api/dataset/covid19/?format=json)
+- **API:**  
+**Country and States:** [covid19.mathdro.id/api](https://covid19.mathdro.id/api)  
+**Cities:** [brasil.io](https://brasil.io/api/dataset/covid19/?format=json)  
 
 ## :gear:Running locally
 ```sh
