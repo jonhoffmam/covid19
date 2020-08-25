@@ -1,5 +1,7 @@
 # COVID19-BR Tracker
 
+COVID-19 tracker for states and cities in Brazil.
+
 ## Demo (:computer:[Web](https://covid19-br.tk))
 
 <a
@@ -15,7 +17,7 @@
 
 This project was developed with the objective of gathering information from COVID19 of the country, states and cities from Brazil.
 
-**How it Works**:grey_question:
+**How it Works**:grey_question:  
 When loading the page, the country data is informed. When the state is selected, the data are displayed instead of the country data, and when selecting the city, the data for the selected city is displayed on the two cards below.
 
 ## :hammer:Technology
