@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const fetchDataCity = async (uf: string, city: string) => {
 	try {
-		const response = await axios.get(`https://brasil.io/api/dataset/covid19/caso/data/?format=json&state=${uf}&city=${city}`);
+		const response = await axios.get(`https://brasil.io/api/v1/dataset/covid19/caso/data/?format=json&state=${uf}&city=${city}`);
 		const {confirmed, deaths, date} = response.data.results[0];
 		const data = response.data.results;
 		
